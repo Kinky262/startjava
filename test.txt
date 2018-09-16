@@ -1,4 +1,4 @@
 Hello Git!
  123
 It's a new line.
-Add new line
+Add new line. 12312
