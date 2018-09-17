@@ -8,7 +8,7 @@ public class Calculator {
 		char opDiv = '/';
 		char opExp = '^';
 		char opDivMod = '%';
-		char op = opMult; // присваеваем операцию из объявленных выше
+		char op = opMult; // присваеваем значение переменной операции из объявленных выше
 		int result = 0;
 
 		if (op == opAdd) {
