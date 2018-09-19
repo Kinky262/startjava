@@ -1,21 +1,21 @@
 public class Calculator {
 	public static void main (String[] args) {
-		int num1 = 16;
-		int num2 = 0;
-		char op = '/'; // присваеваем переменной значение математической операции
+		int num1 = 9;
+		int num2 = 3;
+		char mathOperation = '/'; // присваеваем переменной значение математической операции
 		int result = 0;
 
-		if (op == '+') {
+		if (mathOperation == '+') {
 			result = num1 + num2;
-		} else if (op == '-') {
+		} else if (mathOperation == '-') {
 			result = num1 - num2;
-		} else if (op == '*') {
+		} else if (mathOperation == '*') {
 			result = num1 * num2;
-		} else if (op == '/' && num2 == 0) {
-			System.out.println("This operation is not allowed!"); 
-		} else if (op == '/' && num2 != 0) {				
+		} else if (mathOperation == '/' && num2 == 0) {
+			System.out.println("Division by zero is not allowed!"); 
+		} else if (mathOperation == '/' && num2 != 0) {				
 			result = num1 / num2;
-		} else if (op == '^') {
+		} else if (mathOperation == '^') {
 			result = num1;
 
 			if (num1 != 0 && num2 == 0) {
@@ -23,17 +23,18 @@ public class Calculator {
 			} else if (num1 == 0) {
 				System.out.println("zero can not be raised to a power...");
 			} else {
-			for (int i = 1; i <= num2 && num1 != 0 && num2 != 0; i++) {
-				result *= num1;
-			}
+				for (int i = 1; i < num2; i++) {  
+					result *= num1;
+				}
 		    }
-		} else if (op == '%') {
+		} else if (mathOperation == '%') {
 			result = num1 % num2;
 		}
-		if ((op == '/' && num2 == 0) || (op == '^' && num1 == 0)) {
+
+		if ((mathOperation == '/' && num2 == 0) || (mathOperation == '^' && num1 == 0)) {
 			System.out.println("No result...");
 		} else {
-		System.out.println(num1 + " " + op + " " + num2 + " = " + result);
+			System.out.println(num1 + " " + mathOperation + " " + num2 + " = " + result);
 		}
 	}
 }
