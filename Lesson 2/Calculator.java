@@ -3,9 +3,9 @@ public class Calculator {
 	int num1;
 	int num2;
 	String mathOperation;
-	int result = 0;
 
 	public void mathOperations()	{
+		int result = 0;
 		switch(mathOperation) {
 			case "+":	
 			 result = num1 + num2;
