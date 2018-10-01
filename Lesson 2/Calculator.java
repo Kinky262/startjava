@@ -4,9 +4,9 @@ public class Calculator {
 	protected int num2;
 	protected String mathOperation;
 
-	public void mathOperations()	{
+	public void calculateExpression()	{
 		int result = 0;
-		
+
 		switch(mathOperation) {
 			case "+":	
 				result = num1 + num2;
@@ -25,17 +25,15 @@ public class Calculator {
 			 	}
 				break;
 			case "^":	
-				result = num1;
+				result = 1;
 
-				if (num1 != 0 && num2 == 0) {
-					result = 1;
-				} else if (num1 == 0) {
+				if (num1 == 0) {
 					System.out.println("Zero can not be raised to a power...");
 				} else {
-					for (int i = 1; i < num2; i++) {  
+					for (int i = 0; i < num2; i++) {  
 						result *= num1;
 					}
-	    		}
+				}
 	   			break;
 			case "%":	
 				result = num1 % num2;
