@@ -1,21 +1,33 @@
 public class JaegerTest {
 
 	public static void main(String[] args) {
+		Jaeger coyoteTango = new Jaeger("Coyote Tango", "Mark-1", "Japan", 85.34f, 2312.0f, 5, 7, 4);
+		System.out.println("New Jaeger '" + coyoteTango.getName() + "' was created.");
+		System.out.println("Jaeger's details: \n" +
+							"Model name: " + coyoteTango.getName()     + "\n" + 
+							"Mark: "	   + coyoteTango.getMark()     + "\n" +
+							"Origin: "     + coyoteTango.getOrigin()   + "\n" +
+							"Height: "     + coyoteTango.getHeight()   + "\n" +
+							"Weight: "     + coyoteTango.getWeight()   + "\n" +
+							"Speed: "      + coyoteTango.getSpeed()    + "\n" +
+							"Strenght: "   + coyoteTango.getStrenght() + "\n" +
+							"Armor: "      + coyoteTango.getArmor()    + "\n" );
+		coyoteTango.move();
 
-		Jaeger robot1 = new Jaeger();
-		robot1.setName("Coyote Tango");
-		System.out.println("New Jaeger '" + robot1.getName() + "' was created.");
-		robot1.move();
+		Jaeger gipsyDanger = new Jaeger("Gipsy Danger", "Mark-3", "USA", 79.25f, 1980.0f, 7, 8, 6);
+		System.out.println("New Jaeger '" + gipsyDanger.getName() + "' was created.");
+		gipsyDanger.move();
 
-		Jaeger robot2 = new Jaeger();
-		robot2.setName("Gipsy Danger");
-		robot2.setMark("Mark-3");
-		System.out.println("New Jaeger '" + robot1.getName() + "' was created.");
-		robot2.setHeight(79.25f);
-		System.out.println("Jaeger '" + robot2.getName() + "' has " + robot2.getHeight() + " height.");
-		robot2.move();
-
-		robot1.setName("Coyote Tango-2");
-		System.out.println("First Jaeger has been renamed to " + robot1.getName());
+		coyoteTango.setName("Coyote Tango-2");
+		System.out.println("First Jaeger has been renamed to " + coyoteTango.getName());
+		System.out.println("New details: \n" +
+							"Model name: " + coyoteTango.getName()     + "\n" + 
+							"Mark: "	   + coyoteTango.getMark()     + "\n" +
+							"Origin: "     + coyoteTango.getOrigin()   + "\n" +
+							"Height: "     + coyoteTango.getHeight()   + "\n" +
+							"Weight: "     + coyoteTango.getWeight()   + "\n" +
+							"Speed: "      + coyoteTango.getSpeed()    + "\n" +
+							"Strenght: "   + coyoteTango.getStrenght() + "\n" +
+							"Armor: "      + coyoteTango.getArmor()    + "\n" );
 	}
 }
