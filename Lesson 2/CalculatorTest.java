@@ -8,11 +8,11 @@ public class CalculatorTest {
 
 		do {
 			System.out.print("Enter a first number: ");
-			myCalculator.num1 = scan.nextInt();
+			myCalculator.setNum1(scan.nextInt());
 			System.out.print("Enter a sign of math operation: ");
-			myCalculator.mathOperation = scan.next();
+			myCalculator.setMathOperation(scan.next());
 			System.out.print("Enter a second number: ");
-			myCalculator.num2 = scan.nextInt();
+			myCalculator.setNum2(scan.nextInt());
 			myCalculator.calculateExpression();
 
 			do {
