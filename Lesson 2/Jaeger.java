@@ -23,53 +23,79 @@ public class Jaeger {
 	public void setName(String name) {
 		modelName = name;
 	}
+
 	public String getName() {
 		return modelName;
 	}
+
 	public void setMark(String mark) {
 		this.mark = mark;
 	}
+
 	public String getMark() {
 		return mark;
 	}
+
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
+
 	public String getOrigin() {
 		return origin;
 	}
+
 	public void setHeight(float height) {
 		this.height = height;
 	}
+
 	public float getHeight() {
 		return height;
 	}
+
 	public void setWeight(float weight) {
 		this.weight = weight;
 	}
+
 	public float getWeight() {
 		return weight;
 	}
+
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+
 	public int getSpeed() {
 		return speed;
 	}
+
 	public void setStrenght(int strenght) {
 		this.strenght = strenght;
 	}
+
 	public int getStrenght() {
 		return strenght;
 	}
+
 	public void setArmor(int armor) {
 		this.armor = armor;
 	}
+
 	public int getArmor() {
 		return armor;
 	}
 
 	void move() {
 		System.out.println("Jaeger '" + modelName + "' is moving... \n");
+	}
+
+	public String toString() {
+		return  " [Model name = " + modelName + "]\n" +
+				" [Mark = " 	  + mark 	  + "]\n" +
+				" [Origin = " 	  + origin 	  + "]\n" +
+				" [Height = "	  + height 	  + "]\n" +
+				" [Weight = "	  + weight 	  + "]\n" +
+				" [Speed = " 	  + speed 	  + "]\n" +
+				" [Strenght = "   + strenght  + "]\n" +
+				" [Armor = " 	  + armor 	  + "]\n";
 	}
 }
