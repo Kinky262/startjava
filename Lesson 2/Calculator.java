@@ -1,5 +1,4 @@
 public class Calculator {
-
 	private int num1;
 	private int num2;
 	private String mathOperation;
@@ -7,20 +6,13 @@ public class Calculator {
 	public void setNum1(int value) {
 		num1 = value;
 	}
-	public int getNum1() {
-		return num1;
-	}
+
 	public void setNum2(int value) {
 		num2 = value;
 	}
-	public int getNum2() {
-		return num2;
-	}
+
 	public void setMathOperation(String value) {
 		mathOperation = value;
-	}
-	public String getMathOperation() {
-		return mathOperation;
 	}
 
 	public void calculateExpression()	{
@@ -57,8 +49,6 @@ public class Calculator {
 	   			break;
 			case "%":	
 				result = num1 % num2;
-				break;
-			default:	
 				break;						
 		}
 
