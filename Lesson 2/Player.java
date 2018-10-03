@@ -1,22 +1,20 @@
-import java.util.Scanner;
-
 public class Player {
 	private String playerName;
 	private int number;
-	Scanner playerNumber = new Scanner(System.in);
+
+	public void setPlayerName(String name) {
+		playerName = name;
+	}
 
 	public String getPlayerName() {
 		return playerName;
 	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	public int getNumber() {
 		return number;
-	}
-
-	public Player (String name) {
-		playerName = name;
-	}
-
-	public void guess() {
-		number = playerNumber.nextInt();
 	}
 }
