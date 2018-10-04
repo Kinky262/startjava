@@ -2,6 +2,10 @@ public class Player {
 	private String playerName;
 	private int number;
 
+	public Player(String name) {
+		playerName = name;
+	}
+
 	public void setPlayerName(String name) {
 		playerName = name;
 	}
