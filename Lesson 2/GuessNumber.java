@@ -3,17 +3,16 @@ import java.util.Scanner;
 public class GuessNumber {
 	Player playerOne;
 	Player playerTwo;
-	static int randomNumber = (int) (Math.random() * 101);
+	int randomNumber = (int) (Math.random() * 101);
+	Scanner scanPlayerNumber = new Scanner(System.in);
 
-
-	public GuessNumber(Player one, Player two) {
-		playerOne = one;
-		playerTwo = two;
+	public GuessNumber(Player playerOne, Player playerTwo) {
+		this.playerOne = playerOne;
+		this.playerTwo = playerTwo;
 	}
 
 	public void startGame() {
 		boolean isWin = false;
-		Scanner scanPlayerNumber = new Scanner(System.in);
 
 		System.out.println("\nEnter a number (0-100)." + "\n");
 
@@ -31,18 +30,16 @@ public class GuessNumber {
 		}
 	}
 
-	public boolean compareToTargetNum(Player x) {
-		Player player = x;
+	public boolean compareToTargetNum(Player player) {
 
 		if (player.getNumber() == randomNumber) {
 			System.out.println("You WON!\n");
 			return true;
 		} else if (player.getNumber() < randomNumber) {
 			System.out.println("The number you entered is LESS than what the computer\n");
-			return false;
 		} else {
 			System.out.println("The number you entered is GREATER than what the computer\n");
-			return false;
 		}
+		return false;
 	}
 }
