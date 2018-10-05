@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class GuessNumber {
-	Player playerOne;
-	Player playerTwo;
-	int randomNumber = (int) (Math.random() * 101);
-	Scanner scanPlayerNumber = new Scanner(System.in);
+	private Player playerOne;
+	private Player playerTwo;
+	private int randomNumber = (int) (Math.random() * 101);
+	private Scanner scanPlayerNumber = new Scanner(System.in);
 
 	public GuessNumber(Player playerOne, Player playerTwo) {
 		this.playerOne = playerOne;
