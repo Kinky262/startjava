@@ -1,15 +1,13 @@
-package com.startjava.lesson_2_3.calculator;
+package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-	private int num1;
-	private int num2;
+	private double num1;
+	private double num2;
 	private String mathOperation;
 
-	public void setNum1(int value) {
-		num1 = value;
-	}
+	public void setNum1(double value) { num1 = value; }
 
-	public void setNum2(int value) {
+	public void setNum2(double value) {
 		num2 = value;
 	}
 
@@ -18,7 +16,7 @@ public class Calculator {
 	}
 
 	public void calculateExpression()	{
-		int result = 0;
+		double result = 0;
 
 		switch(mathOperation) {
 			case "+":	
@@ -44,9 +42,7 @@ public class Calculator {
 				if (num1 == 0) {
 					System.out.println("Zero can not be raised to a power...");
 				} else {
-					for (int i = 0; i < num2; i++) {  
-						result *= num1;
-					}
+				    result = Math.pow(num1, num2);
 				}
 	   			break;
 			case "%":	
@@ -54,6 +50,6 @@ public class Calculator {
 				break;						
 		}
 
-		System.out.println(num1 + " " + mathOperation + " " + num2 + " = " + result);	
+		System.out.println(num1 + " " + mathOperation + " " + num2 + " = " + String.format("%.2f", result));
 	}		
 }
