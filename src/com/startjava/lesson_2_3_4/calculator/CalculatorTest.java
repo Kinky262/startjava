@@ -4,14 +4,13 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 	public static void main (String[] args) {
-		String userAnswer = "y";
-		CalculatorTest calculatorTest = new CalculatorTest();
+		String userAnswer;
 		Calculator myCalculator = new Calculator();
 		Scanner scan = new Scanner(System.in);
 
         do {
             System.out.print("Введите математическое выражение: ");
-            calculatorTest.setValues(myCalculator, calculatorTest.receiveExpression(scan.nextLine()));
+            init(myCalculator, receiveExpression(scan.nextLine()));
 			myCalculator.calculateExpression();
 
 			do {
@@ -21,12 +20,11 @@ public class CalculatorTest {
 		} while (userAnswer.equals("Y") || userAnswer.equals("y"));
 	}
 
-    public String[] receiveExpression(String scan) {
-        String[] expression = scan.split(" ");
-        return expression;
+    private static String[] receiveExpression(String scan) {
+	    return scan.split(" ");
     }
 
-    public void setValues(Calculator myCalculator, String[] expression) {
+    private static void init(Calculator myCalculator, String[] expression) {
         myCalculator.setNum1(Integer.parseInt(expression[0]));
         myCalculator.setMathOperation(expression[1]);
         myCalculator.setNum2(Integer.parseInt(expression[2]));
