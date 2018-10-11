@@ -1,39 +1,41 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-	private double num1;
-	private double num2;
+	private int num1;
+	private int num2;
 	private String mathOperation;
 
-	public void setNum1(double value) { num1 = value; }
+	public void setNum1(int value) {
+	    num1 = value;
+	}
 
-	public void setNum2(double value) {
-		num2 = value;
+	public void setNum2(int value) {
+	    num2 = value;
 	}
 
 	public void setMathOperation(String value) {
 		mathOperation = value;
 	}
 
-	public void calculateExpression()	{
+	public void calculateExpression() {
 		double result = 0;
 
 		switch(mathOperation) {
 			case "+":	
-				result = num1 + num2;
+				result = Math.addExact(num1, num2);
 			    break;
 			case "-":	
-				result = num1 - num2;
+				result = Math.subtractExact(num1, num2);
 				break;
 			case "*":	
-				result = num1 * num2;
+				result = Math.multiplyExact(num1, num2);
 				break;
 			case "/":	
 				if (num2 == 0) {
 					System.out.println("Division by zero is not allowed!"); 
 					return;
 			 	} else {
-					result = num1 / num2;
+					result = Math.floorDiv(num1, num2);
 			 	}
 				break;
 			case "^":	
@@ -46,7 +48,7 @@ public class Calculator {
 				}
 	   			break;
 			case "%":	
-				result = num1 % num2;
+				result = Math.floorMod(num1, num2);
 				break;						
 		}
 

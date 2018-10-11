@@ -4,16 +4,14 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 	public static void main (String[] args) {
-		String userAnswer = "y";		
+		String userAnswer = "y";
+		CalculatorTest calculatorTest = new CalculatorTest();
 		Calculator myCalculator = new Calculator();
 		Scanner scan = new Scanner(System.in);
 
         do {
             System.out.print("Введите математическое выражение: ");
-            String[] expression = scan.nextLine().split(" ");
-			myCalculator.setNum1(Double.parseDouble(expression[0]));
-			myCalculator.setMathOperation(expression[1]);
-			myCalculator.setNum2(Double.parseDouble(expression[2]));
+            calculatorTest.setValues(myCalculator, calculatorTest.receiveExpression(scan.nextLine()));
 			myCalculator.calculateExpression();
 
 			do {
@@ -22,4 +20,15 @@ public class CalculatorTest {
 			} while (!userAnswer.equals("Y") && !userAnswer.equals("y") && !userAnswer.equals("N") && !userAnswer.equals("n"));
 		} while (userAnswer.equals("Y") || userAnswer.equals("y"));
 	}
+
+    public String[] receiveExpression(String scan) {
+        String[] expression = scan.split(" ");
+        return expression;
+    }
+
+    public void setValues(Calculator myCalculator, String[] expression) {
+        myCalculator.setNum1(Integer.parseInt(expression[0]));
+        myCalculator.setMathOperation(expression[1]);
+        myCalculator.setNum2(Integer.parseInt(expression[2]));
+    }
 }
