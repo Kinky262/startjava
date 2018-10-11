@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class GuessNumberTest {
 
 	public static void main(String[] args) {
-		String userAnswer = "y";
+		String userAnswer;
 		Scanner scan = new Scanner(System.in);
 
 		do {
@@ -17,7 +17,7 @@ public class GuessNumberTest {
 			game.startGame();
 
 			do {
-				System.out.print("Would you like to continue? [Y/N]: ");
+				System.out.print("\nWould you like to continue? [Y/N]: ");
 				userAnswer = scan.next();	
 			} while (!userAnswer.equals("Y") && !userAnswer.equals("y") && !userAnswer.equals("N") && !userAnswer.equals("n"));
 		} while (userAnswer.equals("Y") || userAnswer.equals("y"));		
