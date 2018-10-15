@@ -6,7 +6,6 @@ public class GuessNumberTest {
 
 	public static void main(String[] args) {
 		String userAnswer;
-		int randomNumber;
 		Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter Player_One name: ");
@@ -16,9 +15,7 @@ public class GuessNumberTest {
 		GuessNumber game = new GuessNumber(playerOne, playerTwo);
 
 		do {
-			randomNumber = ((int) (Math.random() * 101));
-			game.startGame(randomNumber);
-			game.fin();
+			game.startGame();
 
 			do {
 				System.out.print("\nWould you like to continue? [Y/N]: ");

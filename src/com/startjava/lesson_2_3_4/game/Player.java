@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Player {
 	private String name;
 	private int number;
-    private int[] playerOneNumbers = new int[10];
-	private int[] playerTwoNumbers = new int[10];
+	private int attempts;
+    private int[] playersNumbers = new int[10];
 
     public Player(String name) {
         this.name = name;
@@ -24,33 +24,27 @@ public class Player {
         return number;
     }
 
-    public void setPlayerOneNumbers(int number, int i) {
-        playerOneNumbers[i] = number;
+    public void setAttempts() {
+        attempts++;
     }
 
-    public void setPlayerTwoNumbers(int number, int j) {
-        playerTwoNumbers[j] = number;
+    public void resetAttempts() {
+        attempts = 0;
     }
 
-    public int[] getPlayerOneNumbers() {
-        int count = 0;
-        for (int i: playerOneNumbers) {
-            if (i > 0) {
-                count++;
-            }
-        }
-        int[] str = Arrays.copyOf(playerOneNumbers, count);
-        return str;
+    public int getAttempts() {
+        return attempts;
     }
 
-    public int[] getPlayerTwoNumbers() {
-        int count = 0;
-        for (int i: playerTwoNumbers) {
-            if (i > 0) {
-                count++;
-            }
-        }
-        int[] str = Arrays.copyOf(playerTwoNumbers, count);
-        return str;
+    public void setPlayersNumbers(int number, int i) {
+        playersNumbers[i] = number;
+    }
+
+    public int[] getPlayersNumbers() {
+       return Arrays.copyOf(playersNumbers, attempts);
+    }
+
+    public void resetValues() {
+        Arrays.fill(playersNumbers, 0, attempts, 0);
     }
 }

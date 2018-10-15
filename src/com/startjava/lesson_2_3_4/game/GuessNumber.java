@@ -14,31 +14,28 @@ public class GuessNumber {
 		this.playerTwo = playerTwo;
 	}
 
-	public void startGame(int randomNumber) {
-		boolean isWin = false;
-		int i = 0;
-		int j = 0;
+	public void startGame() {
+        int randomNumber = ((int) (Math.random() * 101));
+        boolean isWinner = false;
+        int i = 0;
+
+        playerOne.resetValues();
+        playerTwo.resetValues();
+        playerOne.resetAttempts();
+        playerTwo.resetAttempts();
 
         System.out.println("\nYou have only 10 tries only to guess the number.");
 		System.out.println("Enter a number (0-100)." + randomNumber + "\n");
 
         int k = 0;
-        while (!isWin && k < 10) {
-			System.out.print(playerOne.getPlayerName() + ": ");
-			playerOne.setNumber(scanner.nextInt());
-			playerOne.setPlayerOneNumbers(playerOne.getNumber(), i);
-            isWin = compareToTargetNum(playerOne, randomNumber, i);
-            i++;
+        while (!isWinner && k < 10) {
+            isWinner = keepPlaying(playerOne, randomNumber, i);
 
-			if (isWin) {
-				return;
+            if (isWinner) {
+                return;
             }
-            System.out.print(playerTwo.getPlayerName() + ": ");
-            playerTwo.setNumber(scanner.nextInt());
-            playerTwo.setPlayerTwoNumbers(playerTwo.getNumber(), j);
-            isWin = compareToTargetNum(playerTwo, randomNumber, j);
-            j++;
-
+            isWinner = keepPlaying(playerTwo, randomNumber, i);
+            i++;
             k++;
 
             if (k == 10) {
@@ -48,12 +45,14 @@ public class GuessNumber {
         }
     }
 
-	public boolean compareToTargetNum(Player player, int randomNumber, int attempt) {
+	private boolean compareToTargetNum(Player player, int randomNumber) {
 
 		if (player.getNumber() == randomNumber) {
 			System.out.println("\nYou WON!\n");
-            System.out.println("Player " + player.getPlayerName() + " guessed the number " +
-                    randomNumber + " with " + (attempt + 1) + " attempt(s).");
+            System.out.println("Player " + player.getPlayerName() + " guessed the number "
+                        + randomNumber + " with " + player.getAttempts() + " attempt(s).");
+            getScores(playerOne);
+            getScores(playerTwo);
 			return true;
 		} else if (player.getNumber() < randomNumber) {
 			System.out.println("The number you entered is LESS than what the computer\n");
@@ -63,15 +62,27 @@ public class GuessNumber {
 		return false;
 	}
 
-	public void fin() {
-        System.out.println(playerOne.getPlayerName() + "'s numbers were: "
-                + Arrays.toString(playerOne.getPlayerOneNumbers()));
-
-        if (playerTwo.getPlayerTwoNumbers().length == 0) {
+    private void getScores(Player player) {
+	    if (player.getPlayersNumbers().length == 0) {
             return;
         } else {
-            System.out.print(playerTwo.getPlayerName() + "'s numbers were: "
-                    + Arrays.toString(playerTwo.getPlayerTwoNumbers()) + "\n");
+            System.out.println(player.getPlayerName() + "'s numbers were: "
+                              + Arrays.toString(player.getPlayersNumbers()));
         }
+    }
+
+    private boolean keepPlaying(Player player, int randomNumber, int i) {
+	    boolean isWin;
+
+        System.out.print(player.getPlayerName() + ": ");
+        player.setNumber(scanner.nextInt());
+        player.setAttempts();
+        player.setPlayersNumbers(player.getNumber(), i);
+        isWin = compareToTargetNum(player, randomNumber);
+
+        if (isWin) {
+            return true;
+        }
+        return false;
     }
 }
