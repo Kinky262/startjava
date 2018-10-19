@@ -1,7 +1,5 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.util.Arrays;
-
 public class Player {
 	private String name;
 	private int number;
@@ -12,7 +10,7 @@ public class Player {
         this.name = name;
     }
 
-    public String getPlayerName() {
+    public String getName() {
         return name;
     }
 
@@ -28,23 +26,19 @@ public class Player {
         attempts++;
     }
 
-    public void resetAttempts() {
-        attempts = 0;
+    public void setAttempts(int value) {
+        attempts = value;
     }
 
     public int getAttempts() {
         return attempts;
     }
 
-    public void setPlayersNumbers(int number, int i) {
+    public void setNumbers(int number, int i) {
         playersNumbers[i] = number;
     }
 
-    public int[] getPlayersNumbers() {
-       return Arrays.copyOf(playersNumbers, attempts);
-    }
-
-    public void resetValues() {
-        Arrays.fill(playersNumbers, 0, attempts, 0);
+    public int[] getNumbers() {
+        return playersNumbers;
     }
 }
