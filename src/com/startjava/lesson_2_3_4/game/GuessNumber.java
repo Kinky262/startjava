@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber {
-	private Player playerOne;
-	private Player playerTwo;
+    private final static int COUNT_ATTEMPTS = 10;
+    private Player playerOne;
+    private Player playerTwo;
     private int randomNumber;
     private boolean isWinner;
 	private Scanner scanner = new Scanner(System.in);
@@ -16,57 +17,52 @@ public class GuessNumber {
 	}
 
 	public void startGame() {
-        randomNumber = ((int) (Math.random() * 101));
-        isWinner = false;
 
-        init(playerOne);
-        init(playerTwo);
+        setUp(playerOne);
+        setUp(playerTwo);
         System.out.println("\nYou have only 10 tries only to guess the number.");
         System.out.println("Enter a number (0-100)." + randomNumber + "\n");
 
         int count = 0;
-        int i = 0;
-        while (!isWinner && count < 10) {
-            isWinner = isPlaying(playerOne, randomNumber, i);
 
+        do {
+            isWinner = isPlaying(playerOne, count);
             if (isWinner) {
-                return;
+                break;
             }
-            isWinner = isPlaying(playerTwo, randomNumber, i);
-            i++;
+            isWinner = isPlaying(playerTwo, count);
             count++;
 
-            if (count == 10) {
+            if (count == COUNT_ATTEMPTS) {
                 System.out.println("You are out of 10 tries. GAME OVER.");
                 return;
             }
-        }
+        } while (!isWinner && count < COUNT_ATTEMPTS);
+
+        getScores(playerOne);
+        getScores(playerTwo);
     }
 
-    private void init(Player player) {
-        Arrays.fill(Arrays.copyOf(player.getNumbers(), player.getAttempts()), 0,
-                  player.getAttempts(), 0);
+    private void setUp(Player player) {
+        randomNumber = ((int) (Math.random() * 101));
+        isWinner = false;
+        int[] filledSection = Arrays.copyOf(player.getNumbers(), player.getAttempts());
+        Arrays.fill(filledSection, 0, player.getAttempts(), 0);
         player.setAttempts(0);
     }
 
-    private boolean isPlaying(Player player, int randomNumber, int i) {
+    private boolean isPlaying(Player player, int count) {
         boolean isWin;
 
         System.out.print(player.getName() + ": ");
         player.setNumber(scanner.nextInt());
         player.setAttempts();
-        player.setNumbers(player.getNumber(), i);
-        isWin = compareToTargetNum(player, randomNumber);
-
-        if (isWin) {
-            getScores(playerOne);
-            getScores(playerTwo);
-            return true;
-        }
-        return false;
+        player.setNumbers(player.getNumber(), count);
+        isWin = compareToRandomNum(player);
+        return isWin;
     }
 
-	private boolean compareToTargetNum(Player player, int randomNumber) {
+	private boolean compareToRandomNum(Player player) {
 
 		if (player.getNumber() == randomNumber) {
 			System.out.println("\nYou WON!\n");
@@ -82,9 +78,8 @@ public class GuessNumber {
 	}
 
     private void getScores(Player player) {
-	    if (player.getNumbers().length == 0) {
-            return;
-        } else {
+
+	    if (player.getAttempts() != 0) {
             System.out.println(player.getName() + "'s numbers were: "
                               + Arrays.toString(Arrays.copyOf(player.getNumbers(),
                                 player.getAttempts())));
