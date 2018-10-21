@@ -17,7 +17,6 @@ public class GuessNumber {
 	}
 
 	public void startGame() {
-
         setUp(playerOne);
         setUp(playerTwo);
         System.out.println("\nYou have only 10 tries only to guess the number.");
@@ -46,24 +45,17 @@ public class GuessNumber {
     private void setUp(Player player) {
         randomNumber = ((int) (Math.random() * 101));
         isWinner = false;
-        int[] filledSection = Arrays.copyOf(player.getNumbers(), player.getAttempts());
-        Arrays.fill(filledSection, 0, player.getAttempts(), 0);
+        Arrays.fill(player.getNumbers(), 0, player.getAttempts(), 0);
         player.setAttempts(0);
     }
 
     private boolean isPlaying(Player player, int count) {
-        boolean isWin;
-
         System.out.print(player.getName() + ": ");
-        player.setNumber(scanner.nextInt());
-        player.setAttempts();
-        player.setNumbers(player.getNumber(), count);
-        isWin = compareToRandomNum(player);
-        return isWin;
+        player.setNumbers(scanner.nextInt(), count);
+        return compareToRandomNum(player);
     }
 
 	private boolean compareToRandomNum(Player player) {
-
 		if (player.getNumber() == randomNumber) {
 			System.out.println("\nYou WON!\n");
             System.out.println("Player " + player.getName() + " guessed the number "
@@ -78,7 +70,6 @@ public class GuessNumber {
 	}
 
     private void getScores(Player player) {
-
 	    if (player.getAttempts() != 0) {
             System.out.println(player.getName() + "'s numbers were: "
                               + Arrays.toString(Arrays.copyOf(player.getNumbers(),
